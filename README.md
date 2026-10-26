@@ -30,7 +30,7 @@ Examples:
 ```bash
 python drawer.py photo.png --width 120
 python drawer.py photo.png -c blocks -i -p
-python "C:\Users\me\My Pictures\cat.jpg"
+python drawer.py "C:\Users\me\My Pictures\cat.jpg" # quote paths with spaces
 ```
 
 ## How it works
