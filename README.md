@@ -17,6 +17,7 @@ Turn any image into ASCII art with a single command.
   </tr>
 </table>
 <img src="public/image-5.png" alt="Sample 6" width="100%">
+<img src="public/image-6.png" alt="Sample 6" width="100%">
 
 ## Quick start
 
