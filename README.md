@@ -37,7 +37,7 @@ monospaced font (and zoom out if the image is wide).
 | Option | Description | Default |
 | --- | --- | --- |
 | `-w`, `--width` | Output width in characters | `220` |
-| `-c`, `--charset` | `simple`, `standard` or `blocks` | `standard` |
+| `-c`, `--charset` | `simple`, `standard`, `blocks`, `braille`, or `braille_max` | `standard` |
 | `-i`, `--invert` | Flip brightness (for light text on a dark background) | off |
 | `-o`, `--output` | Output file | `ascii_art.txt` |
 | `-p`, `--print` | Also print the result to the terminal | off |
