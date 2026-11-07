@@ -4,20 +4,23 @@ Turn any image into ASCII art with a single command.
 
 ## Gallery
 
+> [!NOTE]
+> These pictures were generated use `-c braille_max` and `--width 1200` then zoomed out for clearer details.
+
 <table>
   <tr>
-    <td><img src="public/image.png" alt="Sample pic" width="100%"></td>
-    <td><img src="public/image-0.png" alt="Sample 1" width="100%"></td>
-    <td><img src="public/image-1.png" alt="Sample 2" width="100%"></td>
+    <td><img src="public/preview/image.png" alt="Sample pic" width="100%"></td>
+    <td><img src="public/preview/image-1.png" alt="Sample 2" width="100%"></td>
+    <td><img src="public/preview/image-2.png" alt="Sample 3" width="100%"></td>
   </tr>
   <tr>
-    <td><img src="public/image-2.png" alt="Sample 3" width="100%"></td>
-    <td><img src="public/image-3.png" alt="Sample 4" width="100%"></td>
-    <td><img src="public/image-4.png" alt="Sample 5" width="100%"></td>
+    <td><img src="public/preview/image-5.png" alt="Sample 6" width="100%"></td>
+    <td><img src="public/preview/image-3.png" alt="Sample 4" width="100%"></td>
+    <td><img src="public/preview/image-4.png" alt="Sample 5" width="100%"></td>
   </tr>
 </table>
-<img src="public/image-5.png" alt="Sample 6" width="100%">
-<img src="public/image-6.png" alt="Sample 6" width="100%">
+
+<img src="public/preview/image-6.png" alt="Sample 6" width="100%">
 
 ## Quick start
 

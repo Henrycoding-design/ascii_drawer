@@ -3,8 +3,8 @@
 
 Usage:
     python draw.py path/to/image.jpg
-    python draw.py path/to/image.png --charset braille --width 120
-    python draw.py path/to/image.jpg --width 150 --charset detailed --invert
+    python draw.py path/to/image.png --charset braille --width 1200
+    python draw.py path/to/image.jpg --width 1500 --charset detailed --invert
 
 The result is written to ``ascii_art.txt`` in the project root (the folder
 containing this script), regardless of where you run the command from.
@@ -61,10 +61,23 @@ def load_image(path: Path) -> Image.Image:
 
 
 def resize_image(image: Image.Image, new_width: int, aspect: float, height_multiple: int = 1) -> Image.Image:
+    """Resize to new_width, then scale the height by `aspect`.
+
+    aspect < 1 squashes the picture vertically to offset characters that are
+    taller than they are wide. height_multiple rounds the height down so it
+    divides evenly (braille reads 4 pixel rows per character).
+    """
     width, height = image.size
+
+    # Height that keeps the original proportions at the new width, scaled by aspect.
     new_height = max(height_multiple, int(new_width * (height / width) * aspect))
-    new_height -= new_height % height_multiple or 0
+
+    # Round down to a multiple of height_multiple. Braille reads 4 rows at a
+    # time, so leftover rows would index past the bottom edge (IndexError).
+    new_height -= new_height % height_multiple
+    # Rounding can reach 0 for tiny images; keep at least one full row.
     new_height = max(height_multiple, new_height)
+
     return image.resize((new_width, new_height), Image.LANCZOS)
 
 
@@ -91,8 +104,11 @@ def braille_art(image: Image.Image, invert: bool) -> str:
             for dx in range(2):
                 for dy in range(4):
                     on = pixels[x + dx, y + dy] == 0  # dark pixel -> dot
-                    if on != invert:
-                        bits |= BRAILLE_BITS[dx][dy]
+                    if on != invert:  # invert flips which pixels become dots
+                        bits |= BRAILLE_BITS[dx][dy]  # raise this dot
+            # Braille patterns occupy 256 consecutive code points, U+2800-U+28FF.
+            # `bits` (0-255) is the offset into that block, so BRAILLE_BASE + bits
+            # is the character with exactly those dots raised.
             line.append(chr(BRAILLE_BASE + bits))
         lines.append("".join(line))
     return "\n".join(lines)
